@@ -1,11 +1,30 @@
 import Image from "next/image";
 import React from "react";
-import { GetStaticProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Layout from "../../components/Layout";
 import ArticleMeta from "../../components/ArticleMeta";
 import { ArticleProps, Params } from "../../types/types";
 import { fetchBlocksByPageId, fetchPages } from "../../utils/notion";
+import { getText } from "../../utils/property";
+
+// まだあんまりよくわかってないけど、 dynamic に URL path が決定されるページについては、 getStaticProps に加えて getStaticPaths が必要になってくるらしい。まぁ、 getStaticPaths が無いと https://github.com/ayumubanban/ex-tak-notion-cms-next-blog/pull/22#issue-1337930442 で示されてるようなエラーが表示されるしなぁ
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { results } = await fetchPages({});
+  // ? any 使う以外に、もうちょい上手いやり方ないかな？
+  const paths = results.map((page: any) => {
+    return {
+      params: {
+        slug: getText(page.properties.slug.rich_text),
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
 
 // export const getServerSideProps: GetServerSideProps = async (ctx) => {
 export const getStaticProps: GetStaticProps = async (ctx) => {
