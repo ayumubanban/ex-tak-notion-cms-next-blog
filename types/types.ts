@@ -33,6 +33,10 @@ export type IndexProps = {
   pages: PageType[];
 };
 
+export type BlockProps = {
+  block: BlockType;
+};
+
 export type Params = ParsedUrlQuery & {
   slug: string;
 };
