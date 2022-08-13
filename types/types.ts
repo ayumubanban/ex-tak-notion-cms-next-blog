@@ -60,7 +60,7 @@ export type PropertyType = {
   slug: { rich_text: RichTextType[] };
   published: { date: { start: string } };
   isPublic: { checkbox: boolean };
-  tags: { multi_select: [{ name: string }] };
+  tag: { multi_select: [{ name: string }] };
 };
 
 export type PageType = {
