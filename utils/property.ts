@@ -30,7 +30,7 @@ export const getDate = (date: PropertyType["published"]["date"]) => {
 };
 
 export const getMultiSelect = (
-  multiSelect: PropertyType["tags"]["multi_select"]
+  multiSelect: PropertyType["tag"]["multi_select"]
 ) => {
   try {
     return multiSelect.map((tag) => tag.name);
