@@ -62,7 +62,8 @@ const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
           ))}
         </div> */}
         <div className="my-12">
-          <NotionBlocks blocks={blocks} />
+          {/* syntaxHighlighterCSS props で、コードブロックの見た目を微調整できる */}
+          <NotionBlocks blocks={blocks} isCodeHighlighter={true} />
         </div>
       </article>
     </Layout>
