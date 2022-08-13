@@ -47,7 +47,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
   console.log(page);
   console.log(blocks);
-  return <></>;
 
   return (
     <Layout>
