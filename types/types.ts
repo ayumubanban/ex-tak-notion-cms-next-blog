@@ -1,4 +1,7 @@
 import { ReactNode } from "react";
+// ? もしかすると、 deprecated なものなのかも？
+// The `querystring` API is considered Legacy. While it is still maintained, new code should use the `URLSearchParams` API instead.
+import { ParsedUrlQuery } from "querystring";
 
 export type LayoutProps = {
   children: ReactNode;
@@ -14,4 +17,8 @@ export type CardProps = {
     tags: string[];
     content: string;
   };
+};
+
+export type Params = ParsedUrlQuery & {
+  slug: string;
 };
